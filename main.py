@@ -19,6 +19,7 @@ logging.getLogger().setLevel('DEBUG')
 
 TOKEN_FILE = 'token.txt'
 TOKEN = Path(TOKEN_FILE).read_text().strip()
+AUTHORIZED_USERS = []
 
 DURATION = 5
 
@@ -53,6 +54,9 @@ def start(update, context):
     user = msg.from_user
     debug(f'Quiz bot entered by user: {user.id} @{user.username} "{user.first_name} {user.last_name}"')
 
+    if AUTHORIZED_USERS and user.username in AUTHORIZED_USERS:
+        return
+
     if 'username' not in context.user_data:
         context.user_data['username'] = user.username
 
@@ -67,6 +71,9 @@ def common_message(update, context):
     msg = update.message
     user = msg.from_user
     debug(f'Message received from {user.id} @{user.username}: {msg.text}')
+
+    if AUTHORIZED_USERS and user.username in AUTHORIZED_USERS:
+         return
 
     if 'quiz' not in context.user_data:
 
