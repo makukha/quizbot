@@ -18,7 +18,7 @@ Quick start
 
 1. Create your own Telegram bot in @BotFather and get the bot token.
 
-1. Paste your token into **token.txt**.
+1. Create file **token.txt** in bot's directory and put your token there.
 
 1. Run the bot backend:
 
