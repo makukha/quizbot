@@ -1,1 +1,1 @@
-paste your telegram bot token
+paste your telegram bot token here
